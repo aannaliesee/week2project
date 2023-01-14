@@ -1,4 +1,6 @@
 # sleepoutside
+Netlify URL: https://flourishing-muffin-4cd13a.netlify.app/
+Trello URL: https://trello.com/b/gHMEKviw/wdd330-team-board
 
 ## Description
 
