@@ -44,3 +44,29 @@ export function setClick(selector, callback) {
 }
 
 
+export function renderWithTemplate(
+  template,
+  parentElement,
+  data,
+  callback) { parentElement.insertAdjacentHTML("afterbegin", template);
+  if (callback) {
+    callback(data);
+  }
+}
+
+async function loadTemplate(path){
+  let response = await fetch(path);
+  let text = await response.text();
+  return text;
+}
+
+export async function loadHeaderFooter() {
+  let header_temp = await loadTemplate("/partials/header.html");
+  let header_id = document.getElementById("main-header");
+
+  let footer_temp = await loadTemplate("/partials/footer.html");
+  let footer_id = document.getElementById("main-footer");
+
+  renderWithTemplate(header_temp, header_id);
+  renderWithTemplate(footer_temp, footer_id);
+}
