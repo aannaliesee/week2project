@@ -6,6 +6,12 @@ function renderCartContents() {
     let htmlItems = `<p class="no-items-error">Sorry. There are currently no items in the cart.</p>`;
     document.querySelector(".product-list").innerHTML = htmlItems;
   } else {
+    document.getElementById("cart-total").style.display = "inline";
+    let total = 0;
+    for (let i = 0; i < cartItems.length; i++) {
+      total += cartItems[i].FinalPrice;
+    }
+    document.querySelector("#cart-total").innerHTML += total;
     let htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(".product-list").innerHTML = htmlItems.join("");
   }
@@ -31,3 +37,5 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+
+
