@@ -224,3 +224,17 @@ footer {
 #cart-total {
   display: none;
 }
+
+/*Added by AM for Icon Grid styling*/
+.gridicon {
+  width: 100px;
+  height: 100px;
+}
+ul{
+  list-style: none;
+  margin-bottom: 50px;
+
+}
+.icons li{
+  float: left;
+}
