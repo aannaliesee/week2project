@@ -246,3 +246,11 @@ h2 {
 .item-names {
   text-transform: capitalize;
 }
+
+a span {
+  display: inline;
+}
+
+.cart-card {
+  display: block;
+}
