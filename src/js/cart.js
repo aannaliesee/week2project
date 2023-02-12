@@ -1,9 +1,13 @@
 import { getLocalStorage } from "./utils.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
+import ShoppingCart from "./ShoppingCart.mjs";
 
 loadHeaderFooter();
 
-function renderCartContents() {
+const shopCart = new ShoppingCart("so-cart", ".product-list");
+shopCart.renderCartContents();
+
+/*function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   if (cartItems === null) {
     let htmlItems = `<p class="no-items-error">Sorry. There are currently no items in the cart.</p>`;
@@ -41,4 +45,4 @@ function cartItemTemplate(item) {
 
 renderCartContents();
 
-
+*/

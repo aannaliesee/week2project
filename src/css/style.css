@@ -238,3 +238,11 @@ ul{
 .icons li{
   float: left;
 }
+
+h2 {
+  text-align: center;
+}
+
+.item-names {
+  text-transform: capitalize;
+}
