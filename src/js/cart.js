@@ -6,7 +6,7 @@ loadHeaderFooter();
 const shopCart = new ShoppingCart("so-cart", ".product-list");
 shopCart.renderCartContents();
 
-
+shopCart.init();
 
 /*function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");

@@ -8,7 +8,7 @@ function cartItemTemplate(item) {
       alt="${item.Name}"
     />
   </a>
-  <button id="removeFromCart" data-id="${item.Id}">X</button>
+  <button class="removeFromCart" data-id="${item.Id}">X</button>
   <a href="#">
     <h2 class="card__name">${item.Name}</h2>
   </a>
@@ -26,10 +26,16 @@ export default class ShoppingCart {
     this.parentSelector = parentSelector;
   }
   async init() {
-    document.getElementById("removeFromCart").addEventListener("click", removeFromcart.bind(this));
-  }
-  removeFromcart() {
-    const dataId = Number(this.attr("data-id"));
+        const itemsToDelete = document.querySelectorAll(".removeFromCart");
+        for (let i = 0; i < itemsToDelete.length; i++){
+            itemsToDelete[i].addEventListener("click", this.removeFromcart.bind(this));
+        }
+    
+    //document.getElementById("removeFromCart").addEventListener("click", this.removeFromcart.bind(this));
+    }
+  
+  removeFromcart(e) {
+    const dataId = e.currentTarget.dataset.id;
     const products = getLocalStorage("so-cart");
     for (let i = 0; i < products.length; i++){
         if (products[i].Id === dataId){
@@ -39,13 +45,14 @@ export default class ShoppingCart {
     }
 setLocalStorage("so-cart", products);
 this.renderCartContents();
+window.location.reload();
 }
 
   
 
   renderCartContents() {
     const cartItems = getLocalStorage(this.key);
-    if (cartItems === null) {
+    if (cartItems === null || cartItems.length < 1) {
         let htmlItems = "<p class='no-items-error'>Sorry. There are currently no items in the cart.</p>";
         document.querySelector(this.parentSelector).innerHTML = htmlItems;
     } else {
@@ -54,6 +61,7 @@ this.renderCartContents();
         for (let i = 0; i< cartItems.length; i++) {
             total += cartItems[i].FinalPrice;
         }
+        total.toFixed(2);
         document.querySelector("#cart-total").innerHTML += total;
         let htmlItems = cartItems.map((item) => cartItemTemplate(item));
         document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
