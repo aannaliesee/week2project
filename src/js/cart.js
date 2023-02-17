@@ -1,10 +1,12 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, amountInCart } from "./utils.mjs";
 import ShoppingCart from "./ShoppingCart.mjs";
 
 loadHeaderFooter();
-
+amountInCart();
 const shopCart = new ShoppingCart("so-cart", ".product-list");
 shopCart.renderCartContents();
+
+
 
 shopCart.init();
 

@@ -70,3 +70,13 @@ export async function loadHeaderFooter() {
   renderWithTemplate(header_temp, header_id);
   renderWithTemplate(footer_temp, footer_id);
 }
+
+export function amountInCart() {
+  const products = getLocalStorage("so-cart") || [];
+  const amount = products.length.toString();
+  if (amount == 0) {
+    document.querySelector(".cartAmount").innerHTML = "0";
+  } else {
+  document.querySelector(".cartAmount").innerHTML = amount;
+  }
+}
