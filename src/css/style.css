@@ -254,3 +254,51 @@ a span {
 .cart-card {
   display: block;
 }
+
+/*FORM STYLING*/
+
+form input {
+width: 100%;
+padding: 5px;
+margin: 6px 0;
+box-sizing: border-box;
+}
+
+div.formDIV
+{
+    display: block;
+    text-align: center;
+}
+
+#formDIV
+{
+    display: inline-block;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: left;
+    width: 500px;
+}
+
+#checkoutButton {
+  background-color: ;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.checkoutSummary li{
+padding: 8px;
+}
+
+@media screen and (max-width: 600px){
+  #formDIV{
+    display: inline-block;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: left;
+    width: 300px;
+  }
+}
