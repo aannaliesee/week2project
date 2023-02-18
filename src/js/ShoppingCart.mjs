@@ -61,8 +61,7 @@ window.location.reload();
         for (let i = 0; i< cartItems.length; i++) {
             total += cartItems[i].FinalPrice;
         }
-        total.toFixed(2);
-        document.querySelector("#cart-total").innerHTML += total;
+        document.querySelector("#cart-total").innerHTML += total.toFixed(2);
         let htmlItems = cartItems.map((item) => cartItemTemplate(item));
         document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
     }

@@ -4,6 +4,6 @@ import { loadHeaderFooter } from "./utils.mjs";
 
 
 loadHeaderFooter();
-amountInCart();
+//amountInCart();
 
 
