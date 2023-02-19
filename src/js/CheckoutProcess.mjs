@@ -1,4 +1,31 @@
 import { getLocalStorage } from "./utils.mjs";
+import ExternalServices from "./ExternalServices.mjs";
+
+const extService = new ExternalServices();
+
+function formDataToJSON(formElement) {
+  const formData = new FormData(formElement),
+    convertedJSON = {};
+
+  formData.forEach(function (value, key) {
+    convertedJSON[key] = value;
+  });
+
+  return convertedJSON;
+}
+
+function packageItems(items) {
+  const theItems = items.map((item) => {
+      console.log(item);
+      return {
+          id: item.Id,
+          price: item.FinalPrice,
+          name: item.Name,
+          quantity: 1,
+      };
+  });
+  return theItems;
+}
 
 export default class CheckoutProcess {
     constructor(key, outputSelector) {
@@ -44,8 +71,24 @@ export default class CheckoutProcess {
     displayOrderTotals() {
       // once the totals are all calculated display them in the order summary page
       document.getElementById("shipping").innerHTML = "$" + this.shipping;
-      document.getElementById("tax").innerHTML = "$" + this.tax;
-      document.getElementById("orderTotal").innerHTML = "$" + this.orderTotal;
+      document.getElementById("tax").innerHTML = "$" + this.tax.toFixed(2);
+      document.getElementById("orderTotal").innerHTML = "$" + this.orderTotal.toFixed(2);
     }
-    
-  }
+    async checkout() {
+        const formElement = document.forms["checkout"];
+        const json = formDataToJSON(formElement);
+        json.orderDate = new Date();
+        json.orderTotal = this.orderTotal;
+        json.tax = this.tax;
+        json.shipping = this.shipping;
+        json.items = packageItems(this.list);
+        console.log(json);
+        try {
+            const res = await extService.checkout(json);
+            console.log(res);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
+

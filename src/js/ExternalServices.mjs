@@ -1,4 +1,6 @@
-const baseURL = 'http://server-nodejs.cit.byui.edu:3000/';
+import CheckoutProcess from "./CheckoutProcess.mjs";
+
+const baseURL = "http://server-nodejs.cit.byui.edu:3000/";
 
 function convertToJson(res) {
   if (res.ok) {
@@ -25,4 +27,15 @@ async findProductById(id) {
     const data = await convertToJson(response);
     return data.Result;
   }
+
+async checkout(payload) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  };
+  return await fetch(baseURL + "checkout/", options).then(convertToJson);
+}
 }
