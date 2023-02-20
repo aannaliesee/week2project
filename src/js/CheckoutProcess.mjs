@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getAmount, setAmount, setLocalStorage } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 const extService = new ExternalServices();
@@ -38,7 +38,7 @@ export default class CheckoutProcess {
       this.orderTotal = 0;
     }
     init() {
-      this.list = getLocalStorage(this.key);
+      this.list = getAmount("amount");
       this.calculateItemSummary();
       this.calculateOrdertotal();
     }
@@ -86,7 +86,11 @@ export default class CheckoutProcess {
         try {
             const res = await extService.checkout(json);
             console.log(res);
+            for (let i=0; i<this.list.length; i++){
+                localStorage.setItem(this.list[i].Id, []);
+            }
             setLocalStorage("so-cart", []);
+            setAmount("amount", []);
             window.location.reload();
         } catch (err) {
             console.log(err);

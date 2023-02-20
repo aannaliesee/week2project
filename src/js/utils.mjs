@@ -72,8 +72,17 @@ export async function loadHeaderFooter() {
 }
 
 export function amountInCart() {
-  const products = getLocalStorage("so-cart") || [];
+  //const products = getLocalStorage("so-cart") || [];
+  const products = getAmount("amount") || [];
   const amount = products.length;
   const header = document.getElementById("cartAmount");
   header.innerHTML = amount;
+}
+
+export function getAmount(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+
+export function setAmount(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
 }
