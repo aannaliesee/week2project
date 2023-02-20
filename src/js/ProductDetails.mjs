@@ -40,6 +40,7 @@ export default class ProductDetails {
     const products = getLocalStorage("so-cart") || [];
     products.push(this.product);
     setLocalStorage("so-cart", products);
+    window.location.reload();
   }
   renderProductDetails(selector) {
     const element = document.querySelector(selector);

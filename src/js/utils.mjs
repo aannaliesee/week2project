@@ -73,10 +73,7 @@ export async function loadHeaderFooter() {
 
 export function amountInCart() {
   const products = getLocalStorage("so-cart") || [];
-  const amount = products.length.toString();
-  if (amount == 0) {
-    document.querySelector(".cartAmount").innerHTML = "0";
-  } else {
-  document.querySelector(".cartAmount").innerHTML = amount;
-  }
+  const amount = products.length;
+  const header = document.getElementById("cartAmount");
+  header.innerHTML = amount;
 }

@@ -10,7 +10,7 @@ const productId = getParam("product");
 const product = new ProductDetails(productId, dataSource);
 
 loadHeaderFooter();
-//amountInCart();
+amountInCart();
 
 product.init();
 
