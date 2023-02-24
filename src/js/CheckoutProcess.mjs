@@ -86,7 +86,7 @@ export default class CheckoutProcess {
         try {
             const res = await extService.checkout(json);
             console.log(res);
-            for (let i=0; i<this.list.length; i++){
+            for (let i = 0; i < this.list.length; i++){
                 localStorage.setItem(this.list[i].Id, []);
             }
             setLocalStorage("so-cart", []);
@@ -95,6 +95,6 @@ export default class CheckoutProcess {
         } catch (err) {
             console.log(err);
         }
+       
     }
 }
-
