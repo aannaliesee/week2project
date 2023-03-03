@@ -1,4 +1,4 @@
-import { setLocalStorage } from "./utils.mjs";
+import { setLocalStorage, setAmount, getAmount } from "./utils.mjs";
 import { getLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
@@ -37,9 +37,28 @@ export default class ProductDetails {
       .addEventListener("click", this.addToCart.bind(this));
   }
   addToCart() {
+    const amountInCart = getAmount("amount") || [];
+    amountInCart.push(this.product);
+    setAmount("amount", amountInCart);
     const products = getLocalStorage("so-cart") || [];
-    products.push(this.product);
-    setLocalStorage("so-cart", products);
+    let itemCheck = 0;
+    for (let i = 0; i<products.length; i++) {
+      if (products[i].Id == this.product.Id) {
+        let x = localStorage.getItem(this.product.Id);
+        if (x<1) {
+          x=2;
+        }else {
+          x++;
+        }
+        localStorage.setItem(this.product.Id, x);
+        itemCheck++;
+      }
+    }
+    if (itemCheck < 1){
+      products.push(this.product);
+      setLocalStorage("so-cart", products);
+    }
+    window.location.reload();
   }
   renderProductDetails(selector) {
     const element = document.querySelector(selector);

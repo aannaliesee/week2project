@@ -14,6 +14,11 @@
 
   <body>
     <header class="divider" id="main-header">
+      <span id="cartAmount"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
     </header>
 
     <main class="divider">
@@ -27,9 +32,9 @@
             <legend>Shipping</legend>
             <div class="checkoutName">
               <label for="fname">First Name</label>
-              <input name="fname" required/>
+              <input minlength="3" maxlength="20" name="fname" required/>
               <label for="lname">Last Name</label>
-              <input name="lname" required/>
+              <input minlength="3" name="lname" required/>
             </div>
             <div class="checkoutAddress">
               <label for="street">Street</label>
@@ -45,10 +50,10 @@
           <fieldset>
             <legend>Payment</legend>
             <label for="cardNumber">Card Number</label>
-            <input name="cardNumber" required/>
+            <input min="16" max="16" name="cardNumber" required/>
             <label for="expiration">Expiration</label>
             <input name="expiration" required/>
-            <label for="code">Security Code</label>
+            <label min="3" for="code">Security Code</label>
             <input name="code" required/>
           </fieldset>
           <fieldset class="checkoutSummary">
