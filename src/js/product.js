@@ -39,7 +39,7 @@ document
 //==========================================//
   //Added by AM for product comment//
   //get comment from form with id 
-const commentForm = document.querySelector("comment-form");
+const commentForm = document.querySelector("#comment-form");
 
 //add an event listener to comment form 
 commentForm.addEventListener("submit", (event) => {
@@ -49,7 +49,7 @@ commentForm.addEventListener("submit", (event) => {
 
     //get cpmment test from form input
 
-const commentTextInput = document.getElementById("#comment-text");
+const commentTextInput = document.getElementById("comment-text");
 const commentText = commentTextInput.value.trim();
 
 //create javascriipt object to represent comment 

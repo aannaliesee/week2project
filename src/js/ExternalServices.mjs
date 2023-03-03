@@ -1,5 +1,3 @@
-import CheckoutProcess from "./CheckoutProcess.mjs";
-
 const baseURL = "http://server-nodejs.cit.byui.edu:3000/";
 
 function convertToJson(res) {
