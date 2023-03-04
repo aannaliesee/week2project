@@ -58,7 +58,18 @@ export default class ProductDetails {
       products.push(this.product);
       setLocalStorage("so-cart", products);
     }
-    window.location.reload();
+    const backIcon = document.getElementById("backpackIcon");
+    const growing = [
+      { transform: "scale(1)" },
+      { transform: "scale(2)" },
+    ];
+    const timing = {
+      duration: 500,
+      iterations: 3,
+    };
+    window.scrollTo(0, 0);
+    backIcon.animate(growing, timing);
+    setTimeout(() => {window.location.reload(); }, 1000);
   }
   renderProductDetails(selector) {
     const element = document.querySelector(selector);

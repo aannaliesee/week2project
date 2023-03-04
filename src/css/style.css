@@ -110,6 +110,14 @@ button {
   fill: gray;
 }
 
+@keyframes backpack {
+  0%   {width: 25px;}
+  20%  {width: 50px;}
+  40%  {width: 25px;}
+  60%  {width: 50px;}
+  80% {width: 25px;}
+}
+
 /* End cart icon styles */
 
 .mission {
@@ -220,6 +228,7 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
 
 #cart-total {
   display: none;
