@@ -60,6 +60,7 @@ async getOrders(token){
       "Authorization": `Bearer ${token}`
     }
   };
-  return await fetch(baseURL + "orders", options).then(convertToJson);
+  const response = await fetch(baseURL + "orders", options).then(convertToJson);
+  return response;
 }
 }

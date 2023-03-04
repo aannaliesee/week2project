@@ -4,7 +4,7 @@ import { alertMessage } from "./utils.mjs";
 
 export default class admin{
     constructor(outputSelector){
-        this.mainElement = document.querySelector(outputSelector)
+        this.mainElement = document.querySelector(outputSelector);
         this.token = null;
         this.services = new ExternalServices();
     }
@@ -19,7 +19,8 @@ export default class admin{
     }
 
     showLogin(){
-        document.querySelector("#loginButton").addEventListener("click", (event) => {
+        this.mainElement.innerHTML = loginFormTemplate();
+        document.querySelector("#loginButton").addEventListener("click", (e) => {
             const email = document.querySelector("#email").value;
             const password = document.querySelector("#password").value;
             this.login({email, password}, this.showOrders.bind(this));
@@ -50,6 +51,20 @@ export default class admin{
     }
     
 }
+function loginFormTemplate() {
+    return `<fieldset class="login-form">
+    <legend>Login</legend>
+    <p>
+      <label for="email">Email</label>
+      <input type="text" placeholder="email" id="email" value="user1@email.com"/>
+    </p>
+    <p>
+      <label for="password">Password</label>
+      <input type="password" placeholder="password" id="password" />
+    </p>
+    <button type="submit" id="loginButton">Login</button>
+  </fieldset>`;
+  }
 
 function orderTemplate() {
     return `<h2>Current Orders</h2>
