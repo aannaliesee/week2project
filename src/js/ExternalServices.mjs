@@ -18,7 +18,10 @@ export default class ExternalServices {
     //this.path = `../json/${this.category}.json`;
   }
 
+// async getData(category, searchTerm) {
 async getData(category) {
+  // Update code with endpoint for search
+    // const response = await fetch(baseURL + `products/search/${category}?q=${searchTerm}`);
     const response = await fetch(baseURL + `products/search/${category}`);
     const data = await convertToJson(response);
     return data.Result;

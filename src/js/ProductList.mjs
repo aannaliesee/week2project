@@ -14,12 +14,15 @@ function productCardTemplate(product){
 };
 
 export default class ProductList{
+    // constructor(category, searchTerm, dataSource, listElement){
     constructor(category, dataSource, listElement){
         this.category = category;
+        // this.searchTerm = searchTerm;
         this.dataSource = dataSource;
         this.listElement = listElement;
     }
     async init(){
+        // const list = await this.dataSource.getData(this.category, this.searchTerm);
         const list = await this.dataSource.getData(this.category);
         this.renderList(list);
         document.querySelector(".item-names").innerHTML = this.category;
